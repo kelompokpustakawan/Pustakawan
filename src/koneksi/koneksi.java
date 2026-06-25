@@ -5,10 +5,8 @@ public class koneksi {
     private static Connection koneksi;
 
     public static Connection getKoneksi() {
-        // Cek jika koneksi belum dibuat atau sudah tertutup
         if (koneksi == null) {
             try {
-                // Driver untuk MySQL versi terbaru (gunakan com.mysql.cj.jdbc.Driver jika MySQL 8.0+)
                 String driver = "com.mysql.jdbc.Driver";
                 String url = "jdbc:mysql://localhost/perpustakaan";
                 String user = "root";

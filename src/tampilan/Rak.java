@@ -1,6 +1,8 @@
 package tampilan;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 
@@ -360,6 +362,11 @@ private void kosong() {
     }//GEN-LAST:event_jTable1MouseClicked
 
     public static void main(String args[]) {
+        try {
+    UIManager.setLookAndFeel(new FlatIntelliJLaf());
+    } catch(Exception ex) {
+        System.err.println("gagal memuat tema");
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Rak().setVisible(true);

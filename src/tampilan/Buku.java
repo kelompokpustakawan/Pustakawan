@@ -1,6 +1,8 @@
 package tampilan;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 
@@ -59,8 +61,11 @@ public class Buku extends javax.swing.JFrame {
     model.addColumn("Rak");
 
     try {
-        int no = 1;
-        String sql = "SELECT * FROM buku";
+       
+        String sql = "SELECT b.id_buku, b.isbn, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.stok, k.nama_kategori, r.nama_rak " +
+                     "FROM buku b " +
+                     "INNER JOIN kategori k ON b.id_kategori = k.id_kategori " +
+                     "INNER JOIN rak r ON b.id_rak = r.id_rak";
         Connection conn = koneksi.getKoneksi();
         Statement st = conn.createStatement();
         ResultSet rs = st.executeQuery(sql);
@@ -72,10 +77,10 @@ public class Buku extends javax.swing.JFrame {
                 rs.getString("judul"),
                 rs.getString("penulis"),
                 rs.getString("penerbit"),
-                rs.getString("tahun"),
-                rs.getString("stok"),
-                rs.getString("id_kategori"), // Jika Anda menyimpan nama di DB
-                rs.getString("id_rak")       // Jika Anda menyimpan nama di DB
+                rs.getString("tahun_terbit"), 
+                rs.getString("stok"),       
+                rs.getString("nama_kategori"), 
+                rs.getString("nama_rak")      
             });
         }
         tblbk.setModel(model);
@@ -115,11 +120,11 @@ public class Buku extends javax.swing.JFrame {
         txthapus = new javax.swing.JButton();
         txtbatal = new javax.swing.JButton();
         txtkeluar = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblbk = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
         txtcari = new javax.swing.JTextField();
         tcari = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblbk = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,6 +195,63 @@ public class Buku extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtcari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tcari.setText("Cari");
+        tcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tcariActionPerformed(evt);
+            }
+        });
+
+        tblbk.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        tblbk.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblbk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblbkMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblbk);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tcari)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tcari))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -197,9 +259,6 @@ public class Buku extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,11 +314,15 @@ public class Buku extends javax.swing.JFrame {
                                 .addComponent(txtubah)
                                 .addGap(43, 43, 43)
                                 .addComponent(txthapus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                                .addComponent(txtbatal)))))
-                .addGap(41, 41, 41)
-                .addComponent(txtkeluar)
-                .addContainerGap(125, Short.MAX_VALUE))
+                                .addGap(40, 40, 40)
+                                .addComponent(txtbatal)
+                                .addGap(41, 41, 41)
+                                .addComponent(txtkeluar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(jLabel1)))
+                .addGap(53, 53, 53)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,88 +373,84 @@ public class Buku extends javax.swing.JFrame {
                     .addComponent(txtbatal)
                     .addComponent(txtkeluar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblbk.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblbk.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblbkMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblbk);
-
-        txtcari.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        tcari.setText("Cari");
-        tcari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tcariActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tcari)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tcari))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 704, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tcariActionPerformed
-        // TODO add your handling code here:
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("ID Buku");
+    model.addColumn("ISBN");
+    model.addColumn("Judul");
+    model.addColumn("Penulis");
+    model.addColumn("Penerbit");
+    model.addColumn("Tahun");
+    model.addColumn("Stok");
+    model.addColumn("Kategori");
+    model.addColumn("Rak");
+
+    try {
+        String sql = "SELECT b.id_buku, b.isbn, b.judul, b.penulis, b.penerbit, b.tahun_terbit, b.stok, k.nama_kategori, r.nama_rak " +
+                     "FROM buku b " +
+                     "INNER JOIN kategori k ON b.id_kategori = k.id_kategori " +
+                     "INNER JOIN rak r ON b.id_rak = r.id_rak " +
+                     "WHERE b.judul LIKE ? OR b.penulis LIKE ?";
+        
+        Connection conn = koneksi.getKoneksi();
+        PreparedStatement pst = conn.prepareStatement(sql);
+        pst.setString(1, "%" + txtcari.getText() + "%");
+        pst.setString(2, "%" + txtcari.getText() + "%");
+        ResultSet rs = pst.executeQuery();
+
+        while (rs.next()) {
+            model.addRow(new Object[]{
+                rs.getString("id_buku"),
+                rs.getString("isbn"),
+                rs.getString("judul"),
+                rs.getString("penulis"),
+                rs.getString("penerbit"),
+                rs.getString("tahun_terbit"),
+                rs.getString("stok"),
+                rs.getString("nama_kategori"),
+                rs.getString("nama_rak")
+            });
+        }
+        tblbk.setModel(model);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Pencarian Gagal: " + e.getMessage());
+    }
     }//GEN-LAST:event_tcariActionPerformed
 
     private void tblbkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblbkMouseClicked
-        // TODO add your handling code here:
+    int baris = tblbk.rowAtPoint(evt.getPoint());
+    
+    String id = tblbk.getValueAt(baris, 0).toString();
+    txtid.setText(id);
+    txtid.setEditable(false);
+    
+    txtisbn.setText(tblbk.getValueAt(baris, 1).toString());
+    txtjudul.setText(tblbk.getValueAt(baris, 2).toString());
+    txtpenulis.setText(tblbk.getValueAt(baris, 3).toString());
+    txtpenerbit.setText(tblbk.getValueAt(baris, 4).toString());
+    
+    txttahun.setValue(Integer.parseInt(tblbk.getValueAt(baris, 5).toString()));
+    txtpersediaan.setValue(Integer.parseInt(tblbk.getValueAt(baris, 6).toString()));
+    
+    txtkategori.setSelectedItem(tblbk.getValueAt(baris, 7).toString());
+    txtrak.setSelectedItem(tblbk.getValueAt(baris, 8).toString());
     }//GEN-LAST:event_tblbkMouseClicked
 
     private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
@@ -399,21 +458,102 @@ public class Buku extends javax.swing.JFrame {
     }//GEN-LAST:event_txtkeluarActionPerformed
 
     private void txtbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbatalActionPerformed
-        // TODO add your handling code here:
+    txtid.setText("");
+    txtisbn.setText("");
+    txtjudul.setText("");
+    txtpenulis.setText("");
+    txtpenerbit.setText("");
+    txttahun.setValue(1900);
+    txtpersediaan.setValue(0);
+    txtkategori.setSelectedIndex(0);
+    txtrak.setSelectedIndex(0);
+    txtid.setEditable(true);
+    txtid.requestFocus();
     }//GEN-LAST:event_txtbatalActionPerformed
 
     private void txthapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthapusActionPerformed
-        // TODO add your handling code here:
+    int ok = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+    if (ok == 0) {
+        try {
+            String sql = "DELETE FROM buku WHERE id_buku=?";
+            Connection conn = koneksi.getKoneksi();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, txtid.getText());
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+            datatable();
+            txtbatalActionPerformed(null);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal Menghapus Data: " + e.getMessage());
+        }
+    }
     }//GEN-LAST:event_txthapusActionPerformed
 
     private void txtubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtubahActionPerformed
-        // TODO add your handling code here:
+    try {
+        Connection conn = koneksi.getKoneksi();
+        
+        String sqlKategori = "SELECT id_kategori FROM kategori WHERE nama_kategori = ?";
+        PreparedStatement pstK = conn.prepareStatement(sqlKategori);
+        pstK.setString(1, txtkategori.getSelectedItem().toString());
+        ResultSet rsK = pstK.executeQuery();
+        int idKategori = 0;
+        if(rsK.next()) { idKategori = rsK.getInt("id_kategori"); }
+
+        
+        String sqlRak = "SELECT id_rak FROM rak WHERE nama_rak = ?";
+        PreparedStatement pstR = conn.prepareStatement(sqlRak);
+        pstR.setString(1, txtrak.getSelectedItem().toString());
+        ResultSet rsR = pstR.executeQuery();
+        int idRak = 0;
+        if(rsR.next()) { idRak = rsR.getInt("id_rak"); }
+
+        
+        String sql = "UPDATE buku SET isbn=?, judul=?, penulis=?, penerbit=?, tahun_terbit=?, stok=?, id_kategori=?, id_rak=? WHERE id_buku=?";
+        PreparedStatement pst = conn.prepareStatement(sql);
+        
+        pst.setString(1, txtisbn.getText());
+        pst.setString(2, txtjudul.getText());
+        pst.setString(3, txtpenulis.getText());
+        pst.setString(4, txtpenerbit.getText());
+        pst.setString(5, txttahun.getValue().toString());
+        pst.setString(6, txtpersediaan.getValue().toString());
+        pst.setInt(7, idKategori);
+        pst.setInt(8, idRak);
+        pst.setString(9, txtid.getText());
+        
+        pst.executeUpdate();
+        JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
+        datatable();
+        txtbatalActionPerformed(null);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal Mengubah Data: " + e.getMessage());
+    }
     }//GEN-LAST:event_txtubahActionPerformed
 
     private void txtsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsimpanActionPerformed
     try {
-        String sql = "INSERT INTO buku VALUES (?,?,?,?,?,?,?,?,?)";
         Connection conn = koneksi.getKoneksi();
+        
+        
+        String sqlKategori = "SELECT id_kategori FROM kategori WHERE nama_kategori = ?";
+        PreparedStatement pstK = conn.prepareStatement(sqlKategori);
+        pstK.setString(1, txtkategori.getSelectedItem().toString());
+        ResultSet rsK = pstK.executeQuery();
+        int idKategori = 0;
+        if(rsK.next()) { idKategori = rsK.getInt("id_kategori"); }
+
+        
+        String sqlRak = "SELECT id_rak FROM rak WHERE nama_rak = ?";
+        PreparedStatement pstR = conn.prepareStatement(sqlRak);
+        pstR.setString(1, txtrak.getSelectedItem().toString());
+        ResultSet rsR = pstR.executeQuery();
+        int idRak = 0;
+        if(rsR.next()) { idRak = rsR.getInt("id_rak"); }
+
+        
+        String sql = "INSERT INTO buku (id_buku, isbn, judul, penulis, penerbit, tahun_terbit, stok, id_kategori, id_rak) VALUES (?,?,?,?,?,?,?,?,?)";
         PreparedStatement pst = conn.prepareStatement(sql);
         
         pst.setString(1, txtid.getText());
@@ -423,15 +563,16 @@ public class Buku extends javax.swing.JFrame {
         pst.setString(5, txtpenerbit.getText());
         pst.setString(6, txttahun.getValue().toString());
         pst.setString(7, txtpersediaan.getValue().toString());
-        pst.setString(8, txtkategori.getSelectedItem().toString()); // Ambil dari ComboBox
-        pst.setString(9, txtrak.getSelectedItem().toString());      // Ambil dari ComboBox
+        pst.setInt(8, idKategori);
+        pst.setInt(9, idRak);
         
         pst.execute();
         JOptionPane.showMessageDialog(null, "Penyimpanan Data Berhasil");
-        datatable(); // Refresh tabel
+        datatable(); 
+        txtbatalActionPerformed(null);
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
-    }    // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Gagal Simpan: " + e.getMessage());
+    }
     }//GEN-LAST:event_txtsimpanActionPerformed
 
     
@@ -439,30 +580,11 @@ public class Buku extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+       try {
+    UIManager.setLookAndFeel(new FlatIntelliJLaf());
+    } catch(Exception ex) {
+        System.err.println("gagal memuat tema");
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Buku().setVisible(true);
@@ -482,7 +604,7 @@ public class Buku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblbk;
     private javax.swing.JButton tcari;

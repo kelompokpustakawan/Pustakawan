@@ -1,6 +1,8 @@
 package tampilan;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 
@@ -37,7 +39,7 @@ protected void datatable() {
 
 private void kosong() {
     txtid.setText("");
-    txtkategori.setText(""); // Nama variabelnya masih txtkategori ya? Boleh diganti txtnama biar rapi
+    txtkategori.setText("");
     jTextField1.setText("");
     txtid.requestFocus();
 }
@@ -65,7 +67,7 @@ private void kosong() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel1.setText("Form Kategori");
@@ -291,13 +293,13 @@ private void kosong() {
     private void txthapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthapusActionPerformed
     int ok = JOptionPane.showConfirmDialog(null, "Hapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
     if (ok == 0) {
-        String sql = "DELETE FROM kategori WHERE id_kategori = ?"; // Menggunakan ?
+        String sql = "DELETE FROM kategori WHERE id_kategori = ?"; 
         try {
             PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtid.getText()); // Lebih aman
+            stat.setString(1, txtid.getText()); 
             stat.executeUpdate();
             JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
-            kosong(); // Gunakan method kosong() yang sudah Anda buat
+            kosong();
             datatable();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Data Gagal Dihapus: " + e);
@@ -335,10 +337,15 @@ private void kosong() {
     String a = tabmode.getValueAt(bar, 0).toString();
     String b = tabmode.getValueAt(bar, 1).toString();
     txtid.setText(a);
-    txtkategori.setText(b);    // TODO add your handling code here:
+    txtkategori.setText(b);
     }//GEN-LAST:event_jTable1MouseClicked
 
     public static void main(String args[]) {
+        try {
+    UIManager.setLookAndFeel(new FlatIntelliJLaf());
+    } catch(Exception ex) {
+        System.err.println("gagal memuat tema");
+    }
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Kategori().setVisible(true);
