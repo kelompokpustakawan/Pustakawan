@@ -10,7 +10,6 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.UIManager;
 
 public class Anggota extends javax.swing.JFrame {
-    // Inisialisasi koneksi dan model tabel
     private Connection conn = koneksi.getKoneksi();
     private DefaultTableModel tabmode;
     
@@ -374,10 +373,9 @@ public class Anggota extends javax.swing.JFrame {
         String jk = rlaki.isSelected() ? "L" : "P";
         stat.setString(4, jk);
         
-        // --- PROSES KONVERSI TANGGAL ---
-        // Format input dari JForm (Hari-Bulan-Tahun)
+  
         SimpleDateFormat formatInput = new SimpleDateFormat("dd-mm-yyyy"); 
-        // Format untuk database MySQL (Tahun-Bulan-Hari)
+  
         SimpleDateFormat formatMySQL = new SimpleDateFormat("yyyy-mm-dd"); 
         
         String tglLahirMySQL = formatMySQL.format(formatInput.parse(tgllahir.getText()));
@@ -398,7 +396,7 @@ public class Anggota extends javax.swing.JFrame {
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Data Gagal Disimpan: " + e.getMessage());
     } catch (ParseException e) {
-        // Menangkap error jika user salah mengetikkan format di form
+    
         JOptionPane.showMessageDialog(null, "Format tanggal salah! Gunakan format: DD-MM-YYYY (Contoh: 25-12-1999)");
     }
     }//GEN-LAST:event_btnsimpanActionPerformed
@@ -523,7 +521,7 @@ public class Anggota extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    // Mengaktifkan FlatLaf Dark Theme
+   
     try {
     UIManager.setLookAndFeel(new FlatIntelliJLaf());
     } catch(Exception ex) {

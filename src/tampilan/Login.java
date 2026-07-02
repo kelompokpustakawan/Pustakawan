@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import koneksi.koneksi; // Memanggil file koneksi milikmu
+import koneksi.koneksi;
 
 public class Login extends javax.swing.JFrame {
 
@@ -140,19 +140,19 @@ public class Login extends javax.swing.JFrame {
     String username = txtuser.getText().trim();
         String password = new String(txtpass.getPassword());
 
-        // 1. Validasi jika inputan kosong
+     
         if (username.equals("") || password.equals("")) {
             JOptionPane.showMessageDialog(this, "Username dan Password tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // Query relasi cocok dengan skema database perpustakaan Anda
+       
         String sql = "SELECT p.id_petugas, p.nama, p.jabatan " +
                      "FROM akun a " +
                      "JOIN petugas p ON a.id_petugas = p.id_petugas " +
                      "WHERE a.username = ? AND a.password = ?";
 
-        // 2. Menggunakan Try-With-Resources untuk keamanan koneksi database
+
         try (Connection conn = koneksi.getKoneksi()) {
             
             if (conn == null) {
@@ -165,25 +165,22 @@ public class Login extends javax.swing.JFrame {
                 pst.setString(2, password); 
                 
                 try (ResultSet rs = pst.executeQuery()) {
-                    // 3. Cek validasi kecocokan data
+                   
                     if (rs.next()) {
-                        // Mengambil data petugas dari hasil JOIN
+                     
                         int idPetugas = rs.getInt("id_petugas");
                         String namaPetugas = rs.getString("nama");
                         String jabatanPetugas = rs.getString("jabatan");
 
                         JOptionPane.showMessageDialog(this, "Login Berhasil!\nSelamat Datang, " + namaPetugas + " (" + jabatanPetugas + ")", "Sukses", JOptionPane.INFORMATION_MESSAGE);
 
-                        // 4. Membuka Halaman Utama / Dashboard 
-                        // Pastikan Anda sudah membuat class bernama 'MenuUtama' di package Anda
+                   
                         Menu md = new Menu();
                         
-                        // TIPS: Jika MenuUtama Anda memiliki fungsi untuk menangkap nama/jabatan, Anda bisa meneruskannya di sini
-                        // Contoh: md.setSesiPetugas(idPetugas, namaPetugas, jabatanPetugas);
                         
                         md.setVisible(true);
                         
-                        this.dispose(); // Menutup form login agar hilang dari layar
+                        this.dispose();
                         
                     } else {
                         JOptionPane.showMessageDialog(this, "Username atau Password Salah!", "Gagal Login", JOptionPane.ERROR_MESSAGE);
