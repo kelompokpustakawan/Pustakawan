@@ -7,11 +7,9 @@ import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
 
 
-
-
 public class Kategori extends javax.swing.JFrame {
-private Connection conn = koneksi.getKoneksi(); 
-private DefaultTableModel tabmode;
+    private Connection conn = koneksi.getKoneksi(); 
+    private DefaultTableModel tabmode;
 
 public Kategori() {
     initComponents();
@@ -67,13 +65,15 @@ private void kosong() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Form Kategori");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("ID Kategori");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nama kategori");
 
         txtid.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +137,7 @@ private void kosong() {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        txtcari.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtcari.setText("cari");
         txtcari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,23 +154,24 @@ private void kosong() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtcari)
+                        .addGap(3, 3, 3)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcari)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -180,55 +182,55 @@ private void kosong() {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtsimpan)
-                                .addGap(39, 39, 39)
+                        .addGap(184, 184, 184)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(48, 48, 48)
+                                .addComponent(txtkategori, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(72, 72, 72)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(txtubah)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(txtbatal)
-                                        .addGap(32, 32, 32)
-                                        .addComponent(txthapus)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtkeluar))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtkategori)
-                                        .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))))))
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGap(105, 105, 105)
+                        .addComponent(txtsimpan)
+                        .addGap(46, 46, 46)
+                        .addComponent(txtubah)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtbatal)
+                        .addGap(49, 49, 49)
+                        .addComponent(txthapus)
+                        .addGap(49, 49, 49)
+                        .addComponent(txtkeluar)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(240, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtkategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
+                .addGap(147, 147, 147)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtsimpan)
                     .addComponent(txtubah)
                     .addComponent(txtbatal)
                     .addComponent(txthapus)
                     .addComponent(txtkeluar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(301, 301, 301))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,100 +247,100 @@ private void kosong() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
-
-    private void txtsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsimpanActionPerformed
-
-    String sql = "INSERT INTO kategori VALUES (?,?)";
-    try {
-        PreparedStatement stat = conn.prepareStatement(sql);
-        stat.setString(1, txtid.getText());
-        stat.setString(2, txtkategori.getText());
-        stat.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
-        txtid.setText(""); 
-        txtkategori.setText("");
-        txtid.requestFocus();
-        datatable(); 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Data Gagal Disimpan: " + e);
-}    // TODO add your handling code here:
-    }//GEN-LAST:event_txtsimpanActionPerformed
-
-    private void txtubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtubahActionPerformed
-    String sql = "UPDATE kategori SET nama_kategori=? WHERE id_kategori=?";
-    try {
-        PreparedStatement stat = conn.prepareStatement(sql);
-        stat.setString(1, txtkategori.getText());
-        stat.setString(2, txtid.getText());
-        
-        stat.executeUpdate();
-        JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
-        kosong(); 
-        datatable(); 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Data Gagal Diubah: " + e);
-    }    // TODO add your handling code here:
-    }//GEN-LAST:event_txtubahActionPerformed
-
-    private void txtbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbatalActionPerformed
-    txtid.setText("");
-    txtkategori.setText("");
-    jTextField1.setText(""); 
-    txtid.requestFocus();   // TODO add your handling code here:
-    }//GEN-LAST:event_txtbatalActionPerformed
-
-    private void txthapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthapusActionPerformed
-    int ok = JOptionPane.showConfirmDialog(null, "Hapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
-    if (ok == 0) {
-        String sql = "DELETE FROM kategori WHERE id_kategori = ?"; 
-        try {
-            PreparedStatement stat = conn.prepareStatement(sql);
-            stat.setString(1, txtid.getText()); 
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
-            kosong();
-            datatable();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Data Gagal Dihapus: " + e);
-        }
-    }
-    }//GEN-LAST:event_txthapusActionPerformed
-
-    private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
-    dispose();    // TODO add your handling code here:
-    }//GEN-LAST:event_txtkeluarActionPerformed
-
     private void txtcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcariActionPerformed
-    Object[] Baris = {"ID Kategori", "Nama Kategori"};
-    tabmode = new DefaultTableModel(null, Baris);
-    jTable1.setModel(tabmode);
-    
-    String sql = "SELECT * FROM kategori WHERE nama_kategori LIKE '%" + jTextField1.getText() + "%'";
-    
-    try {
-        java.sql.Statement stat = conn.createStatement();
-        ResultSet hasil = stat.executeQuery(sql);
-        while (hasil.next()) {
-            String a = hasil.getString("id_kategori");
-            String b = hasil.getString("nama_kategori");
-            String[] data = {a, b};
-            tabmode.addRow(data);
+        Object[] Baris = {"ID Kategori", "Nama Kategori"};
+        tabmode = new DefaultTableModel(null, Baris);
+        jTable1.setModel(tabmode);
+
+        String sql = "SELECT * FROM kategori WHERE nama_kategori LIKE '%" + jTextField1.getText() + "%'";
+
+        try {
+            java.sql.Statement stat = conn.createStatement();
+            ResultSet hasil = stat.executeQuery(sql);
+            while (hasil.next()) {
+                String a = hasil.getString("id_kategori");
+                String b = hasil.getString("nama_kategori");
+                String[] data = {a, b};
+                tabmode.addRow(data);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Pencarian Gagal: " + e);
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Pencarian Gagal: " + e);
-    }
     }//GEN-LAST:event_txtcariActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-    int bar = jTable1.getSelectedRow();
-    String a = tabmode.getValueAt(bar, 0).toString();
-    String b = tabmode.getValueAt(bar, 1).toString();
-    txtid.setText(a);
-    txtkategori.setText(b);
+        int bar = jTable1.getSelectedRow();
+        String a = tabmode.getValueAt(bar, 0).toString();
+        String b = tabmode.getValueAt(bar, 1).toString();
+        txtid.setText(a);
+        txtkategori.setText(b);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
+        dispose();   
+    }//GEN-LAST:event_txtkeluarActionPerformed
+
+    private void txthapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthapusActionPerformed
+        int ok = JOptionPane.showConfirmDialog(null, "Hapus data ini?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+        if (ok == 0) {
+            String sql = "DELETE FROM kategori WHERE id_kategori = ?";
+            try {
+                PreparedStatement stat = conn.prepareStatement(sql);
+                stat.setString(1, txtid.getText());
+                stat.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+                kosong();
+                datatable();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Data Gagal Dihapus: " + e);
+            }
+        }
+    }//GEN-LAST:event_txthapusActionPerformed
+
+    private void txtbatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbatalActionPerformed
+        txtid.setText("");
+        txtkategori.setText("");
+        jTextField1.setText("");
+        txtid.requestFocus(); 
+    }//GEN-LAST:event_txtbatalActionPerformed
+
+    private void txtubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtubahActionPerformed
+        String sql = "UPDATE kategori SET nama_kategori=? WHERE id_kategori=?";
+        try {
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, txtkategori.getText());
+            stat.setString(2, txtid.getText());
+
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Diubah");
+            kosong();
+            datatable();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Diubah: " + e);
+        }   
+    }//GEN-LAST:event_txtubahActionPerformed
+
+    private void txtsimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsimpanActionPerformed
+
+        String sql = "INSERT INTO kategori VALUES (?,?)";
+        try {
+            PreparedStatement stat = conn.prepareStatement(sql);
+            stat.setString(1, txtid.getText());
+            stat.setString(2, txtkategori.getText());
+            stat.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+            txtid.setText("");
+            txtkategori.setText("");
+            txtid.requestFocus();
+            datatable();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Data Gagal Disimpan: " + e);
+        }   
+    }//GEN-LAST:event_txtsimpanActionPerformed
+
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+
+    }//GEN-LAST:event_txtidActionPerformed
 
     public static void main(String args[]) {
         try {
