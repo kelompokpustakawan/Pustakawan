@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ed620943-18be-4592-b264-93880f3e620a">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     buku_rusak_hilang.`id_kasus` AS buku_rusak_hilang_id_kasus,
+     buku_rusak_hilang.`tanggal_lapor` AS buku_rusak_hilang_tanggal_lapor,
+     buku_rusak_hilang.`id_buku` AS buku_rusak_hilang_id_buku,
+     buku_rusak_hilang.`id_anggota` AS buku_rusak_hilang_id_anggota,
+     buku_rusak_hilang.`id_petugas` AS buku_rusak_hilang_id_petugas,
+     buku_rusak_hilang.`jenis_kondisi` AS buku_rusak_hilang_jenis_kondisi,
+     buku_rusak_hilang.`jumlah` AS buku_rusak_hilang_jumlah,
+     buku_rusak_hilang.`denda_ganti_rugi` AS buku_rusak_hilang_denda_ganti_rugi,
+     buku_rusak_hilang.`status_solusi` AS buku_rusak_hilang_status_solusi
+FROM
+     `buku_rusak_hilang` buku_rusak_hilang]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
