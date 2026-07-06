@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1200" pageHeight="595" orientation="Landscape" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2639ebfb-8af1-4a30-8d00-057e5431546d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="311"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     pengembalian.`id_pengembalian` AS pengembalian_id_pengembalian,
+     pengembalian.`id_peminjaman` AS pengembalian_id_peminjaman,
+     pengembalian.`tanggal_dikembalikan` AS pengembalian_tanggal_dikembalikan,
+     pengembalian.`denda` AS pengembalian_denda,
+     peminjaman.`id_peminjaman` AS peminjaman_id_peminjaman,
+     peminjaman.`tanggal_pinjam` AS peminjaman_tanggal_pinjam,
+     peminjaman.`tanggal_kembali` AS peminjaman_tanggal_kembali,
+     anggota.`id_anggota` AS anggota_id_anggota,
+     anggota.`nama_lengkap` AS anggota_nama_lengkap,
+     buku.`id_buku` AS buku_id_buku,
+     buku.`judul` AS buku_judul
+FROM
+     `peminjaman` peminjaman 
+     INNER JOIN `pengembalian` pengembalian ON peminjaman.`id_peminjaman` = pengembalian.`id_peminjaman`
+     INNER JOIN `anggota` anggota ON peminjaman.`id_anggota` = anggota.`id_anggota`
+     INNER JOIN `peminjaman_detail` peminjaman_detail ON peminjaman.`id_peminjaman` = peminjaman_detail.`id_peminjaman`
+     INNER JOIN `buku` buku ON peminjaman_detail.`id_buku` = buku.`id_buku`]]>
+	</queryString>
+	<field name="pengembalian_id_pengembalian" class="java.lang.Integer"/>
+	<field name="pengembalian_id_peminjaman" class="java.lang.Integer"/>
+	<field name="pengembalian_tanggal_dikembalikan" class="java.sql.Date"/>
+	<field name="pengembalian_denda" class="java.lang.Integer"/>
+	<field name="peminjaman_id_peminjaman" class="java.lang.Integer"/>
+	<field name="peminjaman_tanggal_pinjam" class="java.sql.Date"/>
+	<field name="peminjaman_tanggal_kembali" class="java.sql.Date"/>
+	<field name="anggota_id_anggota" class="java.lang.Integer"/>
+	<field name="anggota_nama_lengkap" class="java.lang.String"/>
+	<field name="buku_id_buku" class="java.lang.Integer"/>
+	<field name="buku_judul" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="424" y="14" width="299" height="49" uuid="fc8e01a3-1ebd-464c-97d7-8308598b632f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Laporan Pengembalian]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="12" width="120" height="38" uuid="c2d7ab50-0cf8-4419-a336-df3f36820265"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Kembali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="12" width="120" height="38" uuid="83879340-1039-4acc-a758-38f3f3094505"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Pinjam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="12" width="120" height="38" uuid="bceeeaa0-88fe-4530-8494-c7b7a134f60f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Batas Kembali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="528" y="12" width="139" height="38" uuid="586aa686-ab15-47aa-bbfb-3b87db4d6fe0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Kembali]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="699" y="12" width="120" height="38" uuid="60f0b441-11d7-464d-99dc-db0382a93764"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Anggota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="863" y="12" width="120" height="38" uuid="69e04b3e-43af-472d-93df-a93867d91788"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Judul Buku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1022" y="12" width="120" height="38" uuid="0c1a33ac-150d-4b0a-9ac1-36ee7f32018b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Denda]]></text>
+			</staticText>
+			<line>
+				<reportElement x="684" y="0" width="1" height="61" uuid="86779c5f-f974-49ce-bdb6-b05ceb2afd79"/>
+			</line>
+			<line>
+				<reportElement x="504" y="0" width="1" height="61" uuid="5adb331b-ad67-48a8-8bb7-118e3aa0f91d"/>
+			</line>
+			<line>
+				<reportElement x="845" y="0" width="1" height="61" uuid="c5732095-e461-4d63-b675-ed468b38099c"/>
+			</line>
+			<line>
+				<reportElement x="1003" y="0" width="1" height="61" uuid="8ea2a4f6-e283-43eb-9902-3b23d29a767e"/>
+			</line>
+			<line>
+				<reportElement x="1160" y="0" width="1" height="61" uuid="3d2f277e-44b4-4ece-b1ec-4e933d0ea6f9"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="61" uuid="ab4d1b52-d872-4a1c-9b89-a6f187dc078e"/>
+			</line>
+			<line>
+				<reportElement x="162" y="0" width="1" height="61" uuid="d9d0169a-14bc-441e-94d1-ad1b59bd7a5b"/>
+			</line>
+			<line>
+				<reportElement x="330" y="0" width="1" height="61" uuid="7bf5a3f1-5996-4044-b557-4016d99bdfad"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1160" height="1" uuid="157846e6-d646-4fa5-8363-93e710a22917"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="684" y="0" width="1" height="125" uuid="e0015a75-5763-4058-9389-c05fc195e6b6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="125" uuid="94a8690e-86a7-4f42-9cf0-413f7529fadf"/>
+			</line>
+			<line>
+				<reportElement x="162" y="0" width="1" height="125" uuid="ca9c08d7-01bb-4f1a-abd1-0f764ff8e268"/>
+			</line>
+			<line>
+				<reportElement x="330" y="0" width="1" height="125" uuid="e4c274e2-d9b8-4e0b-a4bc-08614678c193"/>
+			</line>
+			<line>
+				<reportElement x="504" y="0" width="1" height="125" uuid="6759e64a-12a2-4723-976a-49589fe0dfc3"/>
+			</line>
+			<line>
+				<reportElement x="1160" y="0" width="1" height="125" uuid="38ba1531-8fe0-4383-8cc3-6a0aac969ba4"/>
+			</line>
+			<line>
+				<reportElement x="845" y="0" width="1" height="125" uuid="4ec47968-de5c-4c40-a01f-4e92e5bc9533"/>
+			</line>
+			<line>
+				<reportElement x="1003" y="0" width="1" height="125" uuid="a0a84f15-0a85-44b1-bb9a-6b06314fc2e8"/>
+			</line>
+			<textField>
+				<reportElement x="23" y="32" width="120" height="40" uuid="471a1454-2fa4-4369-8b38-c2550211c2c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pengembalian_id_pengembalian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="35" width="120" height="40" uuid="2ad1edc1-5d79-4f82-b8d6-9c3d0132cd56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peminjaman_tanggal_pinjam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="528" y="35" width="129" height="40" uuid="3437d73d-24f3-4595-a2f9-2f2cf8222a88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peminjaman_tanggal_kembali}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="35" width="120" height="40" uuid="78554c2b-c8cf-48ce-abb7-066e41d5ec8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pengembalian_tanggal_dikembalikan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="709" y="35" width="110" height="40" uuid="653d2dcf-94f2-4fa2-b250-4ddee08f52ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anggota_nama_lengkap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1022" y="35" width="120" height="40" uuid="0413ff5d-0a5a-42e7-be35-346031ecee30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pengembalian_denda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="863" y="35" width="120" height="37" uuid="52b4efab-aeb8-410a-be03-df34b1949a88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_judul}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="0" width="1159" height="1" uuid="65028eba-dbc5-4579-8742-f12166cd655b"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

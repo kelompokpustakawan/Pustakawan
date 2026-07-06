@@ -10,7 +10,6 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import javax.swing.UIManager;
 
 public class Anggota extends javax.swing.JFrame {
-    // Inisialisasi koneksi dan model tabel
     private Connection conn = koneksi.getKoneksi();
     private DefaultTableModel tabmode;
     
@@ -18,6 +17,7 @@ public class Anggota extends javax.swing.JFrame {
         initComponents();
         aktif();
         datatable(); 
+        this.setLocationRelativeTo(null);
     }
     
     
@@ -100,13 +100,15 @@ public class Anggota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Form Anggota");
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Data Anggota");
 
         txtcari.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +149,7 @@ public class Anggota extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -168,34 +170,60 @@ public class Anggota extends javax.swing.JFrame {
                     .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btncari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Id Anggota");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Kode Anggota");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nama Lengkap");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Jenis Kelamin");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tanggal Lahir");
 
+        rlaki.setBackground(new java.awt.Color(102, 153, 255));
         buttonGroup1.add(rlaki);
+        rlaki.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        rlaki.setForeground(new java.awt.Color(255, 255, 255));
         rlaki.setText("Laki - Laki");
 
+        rperempuan.setBackground(new java.awt.Color(102, 153, 255));
         buttonGroup1.add(rperempuan);
+        rperempuan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        rperempuan.setForeground(new java.awt.Color(255, 255, 255));
         rperempuan.setText("Perempuan");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No Telepon");
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tanggal Registrasi");
 
+        txtstatus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktif", "Non-Aktif" }));
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Status");
 
+        btnsimpan.setBackground(new java.awt.Color(255, 255, 255));
+        btnsimpan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnsimpan.setText("Simpan");
         btnsimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +231,8 @@ public class Anggota extends javax.swing.JFrame {
             }
         });
 
+        btnubah.setBackground(new java.awt.Color(255, 255, 255));
+        btnubah.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnubah.setText("Ubah");
         btnubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,6 +240,8 @@ public class Anggota extends javax.swing.JFrame {
             }
         });
 
+        btnhapus.setBackground(new java.awt.Color(255, 255, 255));
+        btnhapus.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnhapus.setText("Hapus");
         btnhapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +249,8 @@ public class Anggota extends javax.swing.JFrame {
             }
         });
 
+        btnbatal.setBackground(new java.awt.Color(255, 255, 255));
+        btnbatal.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnbatal.setText("Batal");
         btnbatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +258,8 @@ public class Anggota extends javax.swing.JFrame {
             }
         });
 
+        btnkeluar.setBackground(new java.awt.Color(255, 255, 255));
+        btnkeluar.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnkeluar.setText("Keluar");
         btnkeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,96 +274,100 @@ public class Anggota extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGap(171, 171, 171)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtid, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                                .addComponent(txtkode)
-                                .addComponent(txtnama))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tglregis, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(notlp, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tgllahir, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(rlaki)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(rperempuan)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnhapus)
-                                .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tgllahir)
+                                    .addComponent(tglregis)
+                                    .addComponent(notlp)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(rlaki)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(rperempuan)))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtnama)
+                                    .addComponent(txtid)
+                                    .addComponent(txtkode))
+                                .addGap(261, 261, 261))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
+                        .addGap(103, 103, 103)
                         .addComponent(btnsimpan)
-                        .addGap(26, 26, 26)
+                        .addGap(47, 47, 47)
                         .addComponent(btnubah)
-                        .addGap(134, 134, 134)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnhapus)
+                        .addGap(48, 48, 48)
                         .addComponent(btnbatal)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnkeluar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnkeluar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(95, 95, 95)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtkode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rlaki)
-                        .addComponent(rperempuan)))
-                .addGap(12, 12, 12)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rlaki)
+                    .addComponent(rperempuan)
+                    .addComponent(jLabel6))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tgllahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(notlp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(tglregis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnsimpan)
                     .addComponent(btnubah)
                     .addComponent(btnhapus)
                     .addComponent(btnbatal)
                     .addComponent(btnkeluar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(143, 143, 143))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -359,10 +399,7 @@ public class Anggota extends javax.swing.JFrame {
         String jk = rlaki.isSelected() ? "L" : "P";
         stat.setString(4, jk);
         
-        // --- PROSES KONVERSI TANGGAL ---
-        // Format input dari JForm (Hari-Bulan-Tahun)
         SimpleDateFormat formatInput = new SimpleDateFormat("dd-mm-yyyy"); 
-        // Format untuk database MySQL (Tahun-Bulan-Hari)
         SimpleDateFormat formatMySQL = new SimpleDateFormat("yyyy-mm-dd"); 
         
         String tglLahirMySQL = formatMySQL.format(formatInput.parse(tgllahir.getText()));
@@ -371,7 +408,6 @@ public class Anggota extends javax.swing.JFrame {
         stat.setString(5, tglLahirMySQL);
         stat.setString(6, notlp.getText());
         stat.setString(7, tglRegisMySQL);
-        // -------------------------------
         
         String status = txtstatus.getSelectedItem().toString().equals("Aktif") ? "Aktif" : "Nonaktif";
         stat.setString(8, status);
@@ -383,7 +419,6 @@ public class Anggota extends javax.swing.JFrame {
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Data Gagal Disimpan: " + e.getMessage());
     } catch (ParseException e) {
-        // Menangkap error jika user salah mengetikkan format di form
         JOptionPane.showMessageDialog(null, "Format tanggal salah! Gunakan format: DD-MM-YYYY (Contoh: 25-12-1999)");
     }
     }//GEN-LAST:event_btnsimpanActionPerformed
@@ -408,7 +443,6 @@ public class Anggota extends javax.swing.JFrame {
         stat.setString(4, tglLahirMySQL);
         stat.setString(5, notlp.getText());
         stat.setString(6, tglRegisMySQL);
-        // -------------------------------
         
         String status = txtstatus.getSelectedItem().toString().equals("Aktif") ? "Aktif" : "Nonaktif";
         stat.setString(7, status);
@@ -448,7 +482,7 @@ public class Anggota extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbatalActionPerformed
 
     private void btnkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkeluarActionPerformed
-    dispose();
+    dispose();  
     }//GEN-LAST:event_btnkeluarActionPerformed
 
     private void btncariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncariActionPerformed
@@ -508,14 +542,12 @@ public class Anggota extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    // Mengaktifkan FlatLaf Dark Theme
     try {
     UIManager.setLookAndFeel(new FlatIntelliJLaf());
     } catch(Exception ex) {
         System.err.println("gagal memuat tema");
     }
 
-    /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
             new Anggota().setVisible(true);

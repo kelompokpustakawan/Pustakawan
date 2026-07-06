@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1360" pageHeight="595" orientation="Landscape" columnWidth="1320" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be7f9b4d-3469-42ed-8590-120b15cc21a0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="31"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     buku_rusak_hilang.`id_kasus` AS buku_rusak_hilang_id_kasus,
+     buku_rusak_hilang.`tanggal_lapor` AS buku_rusak_hilang_tanggal_lapor,
+     buku_rusak_hilang.`id_buku` AS buku_rusak_hilang_id_buku,
+     buku_rusak_hilang.`id_anggota` AS buku_rusak_hilang_id_anggota,
+     buku_rusak_hilang.`id_petugas` AS buku_rusak_hilang_id_petugas,
+     buku_rusak_hilang.`jenis_kondisi` AS buku_rusak_hilang_jenis_kondisi,
+     buku_rusak_hilang.`jumlah` AS buku_rusak_hilang_jumlah,
+     buku_rusak_hilang.`denda_ganti_rugi` AS buku_rusak_hilang_denda_ganti_rugi,
+     buku_rusak_hilang.`status_solusi` AS buku_rusak_hilang_status_solusi,
+     buku.`id_buku` AS buku_id_buku,
+     buku.`judul` AS buku_judul,
+     anggota.`id_anggota` AS anggota_id_anggota,
+     anggota.`nama_lengkap` AS anggota_nama_lengkap
+FROM
+     `buku` buku INNER JOIN `buku_rusak_hilang` buku_rusak_hilang ON buku.`id_buku` = buku_rusak_hilang.`id_buku`
+     INNER JOIN `anggota` anggota ON buku_rusak_hilang.`id_anggota` = anggota.`id_anggota`]]>
+	</queryString>
+	<field name="buku_rusak_hilang_id_kasus" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_tanggal_lapor" class="java.sql.Date"/>
+	<field name="buku_rusak_hilang_id_buku" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_id_anggota" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_id_petugas" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_jenis_kondisi" class="java.lang.String"/>
+	<field name="buku_rusak_hilang_jumlah" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_denda_ganti_rugi" class="java.lang.Integer"/>
+	<field name="buku_rusak_hilang_status_solusi" class="java.lang.String"/>
+	<field name="buku_id_buku" class="java.lang.Integer"/>
+	<field name="buku_judul" class="java.lang.String"/>
+	<field name="anggota_id_anggota" class="java.lang.Integer"/>
+	<field name="anggota_nama_lengkap" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="422" y="17" width="467" height="62" uuid="8cdbce8c-614d-474c-bf63-4bb33ae58fad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Buku Hilang Dan Rusak]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="14" width="100" height="35" uuid="027a1e6d-dc1c-4a68-87ff-0f4fbfa307a7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[No. Kasus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="14" width="124" height="35" uuid="ba92c2f2-5e05-4c12-b878-9d03bc5e1113"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Tanggal Lapor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="14" width="131" height="35" uuid="59a338cc-bb69-4b10-92f6-f7ed2397109e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Nama Anggota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="14" width="131" height="35" uuid="f280dabc-4964-4653-957b-38d4b3b0450b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Judul Buku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="664" y="14" width="131" height="35" uuid="d37a5547-3db1-4aa2-a1f7-b2e9a777c552"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Kondisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="829" y="14" width="131" height="35" uuid="2fc35aea-c93e-4432-b79e-3d4b8c538c14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1008" y="14" width="131" height="35" uuid="3d51bcf3-4d30-4d0e-a26b-1f03187a83cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Denda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1179" y="14" width="131" height="35" uuid="5b3cb01b-5235-4aac-974f-538d0cb20b6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<line>
+				<reportElement x="648" y="0" width="1" height="61" uuid="182ed047-22bf-4f50-9d69-ad93c38085e5"/>
+			</line>
+			<line>
+				<reportElement x="812" y="0" width="1" height="61" uuid="030d4af6-b2b4-4f4f-9597-c3ff18385a37"/>
+			</line>
+			<line>
+				<reportElement x="481" y="0" width="1" height="61" uuid="90ba543f-f3fd-4881-8683-77ac7c69fce9"/>
+			</line>
+			<line>
+				<reportElement x="305" y="0" width="1" height="61" uuid="4dcf067d-e623-4203-baad-c3a81a64e2f0"/>
+			</line>
+			<line>
+				<reportElement x="146" y="0" width="1" height="61" uuid="72e1790f-74b0-4ee2-a2c4-c6faf4588586"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="61" uuid="057dfb86-5042-4166-9620-796d51751572"/>
+			</line>
+			<line>
+				<reportElement x="983" y="0" width="1" height="61" uuid="6160d932-549a-44ec-86dc-ebd42d19763d"/>
+			</line>
+			<line>
+				<reportElement x="1162" y="0" width="1" height="61" uuid="23ac8b1d-3d24-438d-aedc-53257efcdbbd"/>
+			</line>
+			<line>
+				<reportElement x="1320" y="0" width="1" height="61" uuid="acb3a8a8-93e3-4353-813e-176910e56123"/>
+			</line>
+			<line>
+				<reportElement x="1" y="0" width="1320" height="1" uuid="7abc5eb5-4512-4fc5-8db1-3f9302e9b4f1"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="19" width="117" height="41" uuid="a8e41c4b-6b7c-415a-84e7-92c6dd16cf23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_id_kasus}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="648" y="0" width="1" height="125" uuid="e7c8cba6-a6e8-4eb1-b255-f475e9ab02a9"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="125" uuid="d866c0b5-4ae0-4e26-9467-66fa79200c7f"/>
+			</line>
+			<line>
+				<reportElement x="146" y="0" width="1" height="125" uuid="2ad5439d-bf1f-4cf7-8915-c6e99a5e6a42"/>
+			</line>
+			<line>
+				<reportElement x="305" y="0" width="1" height="125" uuid="a41d4660-bf3a-497e-b09f-25098e1a874b"/>
+			</line>
+			<line>
+				<reportElement x="481" y="0" width="1" height="125" uuid="76550a78-15e9-4d2e-8e09-6c0caca054fe"/>
+			</line>
+			<line>
+				<reportElement x="812" y="0" width="1" height="125" uuid="45825620-f628-4d24-ac32-8e3984523213"/>
+			</line>
+			<line>
+				<reportElement x="983" y="0" width="1" height="125" uuid="63658292-e056-4a8b-8e64-7231ffe5ee04"/>
+			</line>
+			<line>
+				<reportElement x="1162" y="0" width="1" height="125" uuid="398be8ef-36c5-439c-9630-3e30390476ab"/>
+			</line>
+			<line>
+				<reportElement x="1320" y="0" width="1" height="125" uuid="8ba3a903-218a-43f6-ab7b-68b5d97f77b0"/>
+			</line>
+			<textField>
+				<reportElement x="177" y="19" width="100" height="41" uuid="47972033-0ebe-4ece-ac1c-1a12d4f9a048"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_tanggal_lapor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="19" width="137" height="41" uuid="b8ed12f0-eafb-4a2a-9b2b-193faa7261dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anggota_id_anggota}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="499" y="19" width="124" height="41" uuid="8988ff77-3b3a-4676-b991-bc7f6bcb4ab9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_judul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="664" y="19" width="131" height="41" uuid="856f27d8-5729-46a9-84f0-1b1b7699adab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_jenis_kondisi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="829" y="19" width="131" height="41" uuid="66bd9d06-4cc4-45f3-9970-634f7e59d9f8"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_jumlah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="998" y="19" width="141" height="41" uuid="4b55fc27-831f-46fa-b159-9c279db4a7db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_denda_ganti_rugi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1179" y="19" width="131" height="41" uuid="662bc377-561d-4723-9102-de766f301670"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_rusak_hilang_status_solusi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="1320" height="1" uuid="22d2f56a-79e6-4ede-b8cc-0b88652daa98"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="44" splitType="Stretch"/>
+	</summary>
+</jasperReport>

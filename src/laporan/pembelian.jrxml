@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1150" pageHeight="595" orientation="Landscape" columnWidth="1110" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e3dd7a09-aa98-4fcc-8b72-456e74b17a05">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pembelian.`no_faktur` AS pembelian_no_faktur,
+     pembelian.`tanggal_beli` AS pembelian_tanggal_beli,
+     pembelian.`id_petugas` AS pembelian_id_petugas,
+     pembelian.`total_bayar` AS pembelian_total_bayar,
+     pembelian_detail.`id_detail` AS pembelian_detail_id_detail,
+     pembelian_detail.`no_faktur` AS pembelian_detail_no_faktur,
+     pembelian_detail.`id_buku` AS pembelian_detail_id_buku,
+     pembelian_detail.`jumlah_beli` AS pembelian_detail_jumlah_beli,
+     pembelian_detail.`harga_beli` AS pembelian_detail_harga_beli,
+     pembelian_detail.`subtotal` AS pembelian_detail_subtotal,
+     buku.`judul` AS buku_judul,
+     buku.`id_buku` AS buku_id_buku,
+     petugas.`id_petugas` AS petugas_id_petugas,
+     petugas.`nama` AS petugas_nama
+FROM
+     `pembelian` pembelian INNER JOIN `pembelian_detail` pembelian_detail ON pembelian.`no_faktur` = pembelian_detail.`no_faktur`
+     INNER JOIN `buku` buku ON pembelian_detail.`id_buku` = buku.`id_buku`
+     INNER JOIN `petugas` petugas ON pembelian.`id_petugas` = petugas.`id_petugas`]]>
+	</queryString>
+	<field name="pembelian_no_faktur" class="java.lang.String"/>
+	<field name="pembelian_tanggal_beli" class="java.sql.Date"/>
+	<field name="pembelian_id_petugas" class="java.lang.Integer"/>
+	<field name="pembelian_total_bayar" class="java.lang.Integer"/>
+	<field name="pembelian_detail_id_detail" class="java.lang.Integer"/>
+	<field name="pembelian_detail_no_faktur" class="java.lang.String"/>
+	<field name="pembelian_detail_id_buku" class="java.lang.Integer"/>
+	<field name="pembelian_detail_jumlah_beli" class="java.lang.Integer"/>
+	<field name="pembelian_detail_harga_beli" class="java.lang.Integer"/>
+	<field name="pembelian_detail_subtotal" class="java.lang.Integer"/>
+	<field name="buku_judul" class="java.lang.String"/>
+	<field name="buku_id_buku" class="java.lang.Integer"/>
+	<field name="petugas_id_petugas" class="java.lang.Integer"/>
+	<field name="petugas_nama" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="408" y="14" width="299" height="54" uuid="d4f46b5f-85c5-4a59-ba38-8ed2ffc1050d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Laporan Pembelian Buku]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="11" width="118" height="36" uuid="07933a9d-34ae-4b85-9e0e-e51e47aa5502"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Faktur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="11" width="118" height="36" uuid="b81332f1-f2d6-443b-8c08-49f3c91cb444"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Beli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="11" width="118" height="36" uuid="7568188d-127d-443c-9bb3-6d05059dd568"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Judul Buku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="11" width="118" height="36" uuid="73ae72d8-2a5c-4819-b073-89720e35a227"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Harga Satuan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="11" width="118" height="36" uuid="ca1d8b80-c82a-458f-8f70-a5143c695a87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="801" y="11" width="118" height="36" uuid="1df5788f-6280-40b1-859b-b4815c2ad69b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sub-Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="965" y="11" width="118" height="36" uuid="6d0464a5-4f64-4f9b-9d9c-91ee72ea3cd2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Petugas]]></text>
+			</staticText>
+			<line>
+				<reportElement x="475" y="0" width="1" height="61" uuid="2f12a69c-16d4-4b45-b373-9a84b5b79634"/>
+			</line>
+			<line>
+				<reportElement x="160" y="0" width="1" height="61" uuid="4d6fc7f5-8a81-497e-8ac1-e5258d5e104f"/>
+			</line>
+			<line>
+				<reportElement x="317" y="0" width="1" height="61" uuid="1698532f-193c-41ee-aeca-4f50f2b5be6c"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="61" uuid="17120301-c0f4-46e0-b9e4-b7015ecb9a66"/>
+			</line>
+			<line>
+				<reportElement x="632" y="0" width="1" height="61" uuid="11d34a84-7526-4303-bf6d-b90e1c56b05b"/>
+			</line>
+			<line>
+				<reportElement x="784" y="0" width="1" height="61" uuid="cf5f98aa-3d63-466e-ba45-e27ffa3ffa79"/>
+			</line>
+			<line>
+				<reportElement x="946" y="0" width="1" height="61" uuid="7942f697-9b81-447d-a43e-329947056735"/>
+			</line>
+			<line>
+				<reportElement x="1110" y="0" width="1" height="61" uuid="2bbe4c0d-9c21-438b-ac64-3b0f66798787"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<line>
+				<reportElement x="632" y="0" width="1" height="125" uuid="e63a7bd8-bfee-49cb-9311-fe90a325d8f9"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="125" uuid="04280ca0-7692-4528-85e0-fc4b33c64aca"/>
+			</line>
+			<line>
+				<reportElement x="160" y="0" width="1" height="125" uuid="0c952ad2-6102-4971-9874-8ab458616203"/>
+			</line>
+			<line>
+				<reportElement x="317" y="0" width="1" height="125" uuid="1241c9be-4043-4aa2-9640-e3528924e5a9"/>
+			</line>
+			<line>
+				<reportElement x="475" y="0" width="1" height="125" uuid="c31b607a-0e39-4f5e-94d5-4a288c6027fe"/>
+			</line>
+			<line>
+				<reportElement x="784" y="0" width="1" height="125" uuid="dbb5a9d6-9d07-4ab4-b7e0-df269e85ffa2"/>
+			</line>
+			<line>
+				<reportElement x="946" y="0" width="1" height="125" uuid="7787c14e-9cf7-4059-aac7-532bd6252e63"/>
+			</line>
+			<line>
+				<reportElement x="1110" y="0" width="1" height="125" uuid="e606b4a3-c751-494b-b5e7-4de7eccf7578"/>
+			</line>
+			<textField>
+				<reportElement x="16" y="29" width="128" height="43" uuid="9d572678-f3a8-4b14-9ce1-52ac7989f23e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_no_faktur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="29" width="118" height="43" uuid="9ad575bc-4d0e-4688-8dd4-b325bd2340ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_tanggal_beli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="29" width="118" height="43" uuid="8aa212f2-d000-4757-b1a9-f0d272094628"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buku_judul}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="493" y="29" width="118" height="43" uuid="1d7a44b4-a6ce-4404-8550-24d5e08b74c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_detail_harga_beli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="965" y="29" width="129" height="43" uuid="806becae-adb6-49c3-90b0-c6e405a90e9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{petugas_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="29" width="118" height="43" uuid="b65f4d04-96e9-4fd4-bcc1-577a3a223f07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_detail_jumlah_beli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="801" y="29" width="130" height="43" uuid="12f1d6d8-ac39-4849-a6de-30f13f13df9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_detail_subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="71" splitType="Stretch">
+			<line>
+				<reportElement x="632" y="0" width="1" height="71" uuid="d6444875-6802-4ffc-becd-9c78c6a4d448"/>
+			</line>
+			<line>
+				<reportElement x="475" y="0" width="1" height="71" uuid="0fa697f2-65e9-4cda-a410-715a2315de3d"/>
+			</line>
+			<line>
+				<reportElement x="784" y="0" width="1" height="71" uuid="dd4fdc11-7494-469c-b113-311d88cad178"/>
+			</line>
+			<line>
+				<reportElement x="946" y="0" width="1" height="71" uuid="62a362e9-200e-4830-8c31-d52046bf4eed"/>
+			</line>
+			<line>
+				<reportElement x="1110" y="0" width="1" height="71" uuid="e8965b49-2c3e-4fde-9421-fe366d1457a6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="71" uuid="eaeb33a1-e265-4679-970b-3d9bc1aae6ff"/>
+			</line>
+			<line>
+				<reportElement x="160" y="0" width="1" height="71" uuid="0ceaa610-28e3-448b-9317-352b38788985"/>
+			</line>
+			<line>
+				<reportElement x="317" y="0" width="1" height="71" uuid="80b95abd-f2e7-4b18-93d9-00293db52def"/>
+			</line>
+			<staticText>
+				<reportElement x="26" y="21" width="118" height="36" uuid="a7e2ea86-e788-4891-9c8e-a12a2b38e538"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Bayar]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="801" y="21" width="130" height="36" uuid="b7ce1eef-34e9-4b6f-abd0-b58ab4631ae1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pembelian_total_bayar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
